@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[`minehub-server-list-table-th minehub-server-list-table-th--${props.name}`, {'cursor-pointer': props.orderable}]"
+    :class="[`board-server-list-table-th board-server-list-table-th--${props.name}`, {'cursor-pointer': props.orderable}]"
   >
     {{props.label}}
 
@@ -31,7 +31,7 @@ const props = defineProps({
   }
 }
 
-.minehub-server-list-table-th {
+.board-server-list-table-th {
   &--players {
     @media(max-width: 600px) {
       padding-right: 0;

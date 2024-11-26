@@ -1,14 +1,12 @@
 <template>
-  <small>
-    <template v-if="props.for && !server.versionsString.startsWith('da')">per</template>
-    {{server.versionsString}}
-  </small>
+  <div>
+    {{versionsToString(server.versions)}}
+  </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
   server: IServer
-  for?: boolean
 }>()
 </script>
 

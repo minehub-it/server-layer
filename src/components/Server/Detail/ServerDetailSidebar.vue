@@ -14,7 +14,7 @@
         </v-col>
         <v-col
           xs-4
-          class="server-version"
+          class="minehub-server-version"
         >
           {{ server.versionsString }}
         </v-col>
@@ -175,7 +175,7 @@
             </span>
           </v-col>
           <v-col class="pa-0 text-right">
-            <span class="server-players">
+            <span class="minehub-server-players">
               <template v-if="server.players === 1">
                 1 giocatore
               </template>
@@ -197,7 +197,7 @@
       title="Classifica"
       icon="mdi-view-list"
     >
-      <div class="server-header-list-details-votes-count caption">
+      <div class="minehub-server-header-list-details-votes-count caption">
         <div>
           <template v-if="new Date().getDate() === 1">
             Nel mese precedente
@@ -274,7 +274,7 @@ const serverListStore = useServerListStore(),
         font-size: 18px;
       }
 
-      .server-online {
+      .minehub-server-online {
         float: right;
         margin-top: 8px;
       }
@@ -285,7 +285,7 @@ const serverListStore = useServerListStore(),
       margin-bottom: 10px;
       color: #999;
 
-      &.server-status {
+      &.minehub-server-status {
         cursor: default;
       }
 
@@ -293,7 +293,7 @@ const serverListStore = useServerListStore(),
         color: inherit;
       }
 
-      .server-version {
+      .minehub-server-version {
         margin-top: 3px;
         font-size: 11px;
         line-height: 15px;

@@ -1,13 +1,13 @@
 <template>
-  <small v-if="server.online">
-    <span class="players" v-text="Number(server.players)"/>
-    <span class="slots text-grey" v-text="' / ' + Number(server.slots)"/>
-  </small>
+  <div v-if="server.online">
+    <span class="players" v-text="server.players"/>
+    <span class="slots text-grey" v-text="' / ' + server.slots"/>
+  </div>
 
   <!-- Server slots -->
-  <small v-else>
-    <span class="slots text-grey darken-3" v-text="Number(server.slots)"/>
-  </small>
+  <div v-else-if="server.slots > 0">
+    <span class="slots text-grey darken-3" v-text="server.slots"/>
+  </div>
 </template>
 
 <script setup lang="ts">

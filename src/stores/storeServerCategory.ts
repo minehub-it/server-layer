@@ -8,12 +8,14 @@ export const useServerCategoryStore = defineStore('server/category', () => {
   })
 
   async function initialize() {
-    const queryContentKey = `/server-list/categories`
+    const queryContentKey = `/server/categories`
 
     await useAsyncData(queryContentKey, async () => {
       const document = await queryContent(queryContentKey).findOne()
 
       setCategories(document.body)
+
+      return true
     })
   }
 

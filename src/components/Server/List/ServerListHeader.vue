@@ -2,7 +2,8 @@
 const serverListStore = useServerListStore()
 const serverFilterStore = useServerFilterStore()
 const serverCategoryStore = useServerCategoryStore()
-const {categories } = serverCategoryStore
+
+const categories = computed(() => serverCategoryStore.categories)
 const filters = computed(() => serverFilterStore.filters)
 const list = computed(() => serverListStore.list)
 
@@ -22,25 +23,31 @@ const categorySelected = ref(null)
   <MainHeaderSearch name="serverlist">
     <template v-slot:logo>
       <!--
+        :to="'/lista-server-' + convertPlatformIdToSlug(filters.platform)"
+      -->
       <LogoTextcraft
         v-if="filters.platform"
-        name="serverlist" class="mb-2 mb-md-0 mt-3 mt-sm-0"
-        :to="'/lista-server-' + convertPlatformIdToSlug(filters.platform)"
+        name="serverlist" class="mt-3 mt-sm-1 mb-2 mb-md-0"
         :description="`Lista server per Minecraft: ${convertPlatformIdToFullName(filters.platform)}`"
         :alt="`Lista dei server italiani per Minecraft: ${convertPlatformIdToFullName(filters.platform)}`"
       />
-      -->
+      <v-chip
+          class="minehub-serverlist-edition text-overline" size="small"
+          :text="filters.platform"
+      />
+      <!--
       <div class="text-h5 mt-md-3 mt-0 mb-sm-0 mb-2">
         Lista server per <br class="hidden-md-and-up" />
         <strong>Minecraft: {{ convertPlatformIdToFullName(filters.platform) }}</strong>
       </div>
+      -->
     </template>
 
     <template v-slot:search>
       <client-only>
         <v-text-field
           class="minehub-smart-search-1"
-          chips variant="solo"
+          chips variant="plain"
           placeholder="Cerca server"
           hide-details
           v-model="search.text"
@@ -54,23 +61,19 @@ const categorySelected = ref(null)
     </template>
 
     <template v-slot:categoriesWide>
-      <v-btn
+      <ServerCategoryButton
         :to="`/lista-server-${convertPlatformIdToSlug(filters.platform)}`"
         :active="!filters.category"
-        class="mx-1 mt-2"
-        exact @click="serverFilterStore.setCategory(null)"
-      >
-       Tutti
-      </v-btn>
+        text="Tutti"
+        @click="serverFilterStore.setCategory(null)"
+      />
 
-      <v-btn
+      <ServerCategoryButton
         v-for="category of categories"
         :to="`/lista-server-${convertPlatformIdToSlug(filters.platform)}/${category.slug}`"
-        class="mx-1 mt-2"
-        exact @click="serverFilterStore.setCategory(category.slug)"
-      >
-        {{category.name}}
-      </v-btn>
+        @click="serverFilterStore.setCategory(category.slug)"
+        :text="category.name"
+      />
     </template>
 
     <template v-slot:categoriesSelect>
@@ -86,6 +89,13 @@ const categorySelected = ref(null)
 </template>
 
 <style lang="scss">
+.minehub-serverlist-edition {
+  font-size: 12px !important;
+  margin-top: -58px;
+  padding-top: 2px;
+  opacity: 0.75;
+}
+
 #serverlist-main-header {
   .text-h5 {
     strong {
@@ -114,14 +124,13 @@ const categorySelected = ref(null)
       margin-bottom: 0;
     }
   }
+
+  .minehub-smart-search-1 .v-field {
+    margin-top: -2px !important;
+  }
 }
 
 @media(max-width: 600px) {
-  .minehub-smart-search-1 .v-field {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-  }
-
   .minehub-smart-search-2 .v-field {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;

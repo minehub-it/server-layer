@@ -1,5 +1,5 @@
 <template>
-  <div id="server-header">
+  <div id="minehub-server-header">
     <v-toolbar class="px-5" height="110" :style="`background-color: ${server.themeColor} !important;`" :elevation="0">
       <v-row>
         <v-col :cols="6">
@@ -7,7 +7,7 @@
           <div class="d-flex align-center">
 
             <ServerDetailIcon
-                :image="getServerFavicon(server)"
+                :image="server.favicon"
                 :name="server.name"
                 class="ml-6 mr-8"
             />
@@ -25,7 +25,7 @@
         </v-col>
         <v-col :cols="6">
 
-          <div class="server-header-list-details text-right hidden-xs-only mr-3">
+          <div class="minehub-server-header-list-details text-right hidden-xs-only mr-3">
             <ServerDetailPlay
                 class="mt-3"
                 color="white"
@@ -92,7 +92,7 @@ const tabsList = computed(() => {
 </script>
 
 <style lang="scss">
-#server-header {
+#minehub-server-header {
   user-select: none;
 
   .v-tabs {
@@ -122,12 +122,12 @@ const tabsList = computed(() => {
     }
   }
 
-  .server-header-list-details {
+  .minehub-server-header-list-details {
     margin-top: 1px;
     line-height: 18px;
   }
 
-  .server-vote {
+  .minehub-server-vote {
     margin-right: -4px;
 
     @media (min-width: 960px) {
@@ -135,26 +135,26 @@ const tabsList = computed(() => {
     }
   }
 
-  .server-vote-count {
+  .minehub-server-vote-count {
     cursor: default;
   }
 
-  &.server-voted {
-    .server-vote {
+  &.minehub-server-voted {
+    .minehub-server-vote {
       display: inline-block;
       background: rgba(255, 255, 255, 0.15);
     }
 
-    .server-vote-view {
+    .minehub-server-vote-view {
       display: none;
     }
   }
 
-  .server-name {
+  .minehub-server-name {
     color: white;
   }
 
-  .server-ip {
+  .minehub-server-ip {
     color: #fff;
     opacity: .75;
   }

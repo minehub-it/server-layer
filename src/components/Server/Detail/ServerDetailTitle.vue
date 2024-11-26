@@ -1,6 +1,6 @@
 <template>
   <span
-    class="server-name body-1 font-weight-medium text-truncate"
+    class="minehub-server-name font-weight-black text-truncate"
     v-text="title"
   />
 </template>
@@ -12,5 +12,8 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-
+.minehub-server-name {
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
 </style>

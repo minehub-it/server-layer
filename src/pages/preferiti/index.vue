@@ -5,11 +5,12 @@
 <script setup lang="ts">
 const serverFilterStore = useServerFilterStore()
 
-serverFilterStore.setPlatform('je')
+serverFilterStore.setPlatform(null)
 serverFilterStore.setCategory(null)
+serverFilterStore.setFavorite(true)
 
 useHead({
-  title: 'Lista Server per Minecraft: Java Edition - Minecraft ITALIA',
+  title: 'Lista Server per Minecraft: Preferiti - Minecraft ITALIA',
   meta: [
       {
         name: `description`,

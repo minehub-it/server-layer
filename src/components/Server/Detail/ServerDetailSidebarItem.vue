@@ -22,7 +22,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-#server-page .column-sidebar {
+#minehub-server-page .column-sidebar {
   .brand-icon {
     height: 16px;
     width: 16px;

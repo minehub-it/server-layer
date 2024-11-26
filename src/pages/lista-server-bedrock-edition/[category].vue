@@ -3,19 +3,14 @@
 </template>
 
 <script setup lang="ts">
-const serverListStore = useServerListStore()
 const serverFilterStore = useServerFilterStore()
 const serverCategoryStore = useServerCategoryStore()
 
 const categoryDetail = computed(() => serverCategoryStore.categoryDetail)
 const route = useRoute()
 
-serverCategoryStore.initialize()
-
 serverFilterStore.setPlatform('be')
 serverFilterStore.setCategory(String(route.params.category))
-
-serverListStore.initialize()
 
 definePageMeta({
   validate: async (route) => {

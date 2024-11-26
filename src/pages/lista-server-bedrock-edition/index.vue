@@ -3,16 +3,10 @@
 </template>
 
 <script setup lang="ts">
-const serverListStore = useServerListStore()
 const serverFilterStore = useServerFilterStore()
-const serverCategoryStore = useServerCategoryStore()
-
-serverCategoryStore.initialize()
 
 serverFilterStore.setPlatform('be')
 serverFilterStore.setCategory(null)
-
-serverListStore.initialize()
 
 useHead({
   title: 'Lista Server per Minecraft: Bedrock Edition - Minecraft ITALIA',

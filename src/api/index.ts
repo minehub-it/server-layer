@@ -5,6 +5,9 @@ const api: AxiosInstance = axios.create({
 })
 
 export default {
+  async pingServer(address: string, platform: string) {
+    return (await api.get(`api/ping/${address}/${platform}`)).data
+  },
   async getServer(slug: string): Promise<IServer> {
     return (await api.get(`server/info/${slug}`)).data
   },

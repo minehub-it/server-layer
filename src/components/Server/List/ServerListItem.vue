@@ -1,0 +1,54 @@
+<script setup lang="ts">
+defineProps<{
+  server: IServer
+}>()
+
+const emit = defineEmits(['detailPreviewClick'])
+
+const {categoriesNames} = useServerCategoryStore()
+</script>
+
+<template>
+  <v-card
+      rounded class="py-2"
+      :data-server-id="server.id"
+  >
+
+    <template #prepend>
+      <nuxt-link class="d-inline-block px-3 mt-8 mr-1" :to="serverRoute(server.slug)">
+        <ServerDetailIcon :image="server.favicon" :name="server.name"/>
+      </nuxt-link>
+    </template>
+
+    <template #item>
+      <div>
+        <ServerDetailTitle :title="server.name" />
+        <ServerDetailOnline v-if="server.online" />
+      </div>
+      <ServerDetailIp :address="server.address"/>
+    </template>
+
+    <template #subtitle>
+      <ServerDetailCategories :server="server" class="mb-1" />
+    </template>
+
+    <template #append>
+      <ServerDetailPlayers
+          :server="server"
+          class="mr-8"
+      />
+
+      <ServerDetailPlay
+          class="mr-3"
+          @click="emit('detailPreviewClick', server)"
+      />
+    </template>
+  </v-card>
+</template>
+
+<style scoped lang="scss">
+tr td {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+</style>

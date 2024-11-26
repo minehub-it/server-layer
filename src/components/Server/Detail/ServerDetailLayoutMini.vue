@@ -2,7 +2,7 @@
   <v-row>
     <v-col class="flex-grow-0 px-5">
       <nuxt-link :to="`/server/${server.slug}`">
-        <ServerDetailIcon class="mr-2" :image="getServerFavicon(server)" style="margin-top: -2px;" />
+        <ServerDetailIcon class="mr-2" :image="server.favicon" style="margin-top: -2px;" />
       </nuxt-link>
     </v-col>
     <v-col class="flex-grow-1">

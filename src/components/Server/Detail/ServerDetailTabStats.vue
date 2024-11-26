@@ -1,5 +1,5 @@
 <template>
-  <div id="server-stats">
+  <div id="minehub-server-stats">
 
     <div>
 
@@ -91,7 +91,7 @@ const {themeColor} = useThemeStore()
 </script>
 
 <style lang="scss">
-#server-stats {
+#minehub-server-stats {
   .v-tabs.theme--dark > .v-tabs-bar {
     background: none;
   }

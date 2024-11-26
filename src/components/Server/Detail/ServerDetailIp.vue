@@ -1,6 +1,6 @@
 <template>
-  <span
-    class="server-ip text-truncate" @click="copyIp"
+  <div
+    class="minehub-server-ip text-truncate" @click="copyIp"
     v-text="props.address"
   />
 
@@ -14,32 +14,25 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 
-const props = defineProps({
-  address: String,
-})
+const props = defineProps<{
+  address: string
+}>()
 
 const snackbar = ref(false)
-let removeAllRangesTimeout = null
-
 
 function copyIp(e) {
   const { text, copy } = useClipboard({ source: e.target.innerText })
 
   copy()
   snackbar.value = true
-
-  clearTimeout(removeAllRangesTimeout)
-  removeAllRangesTimeout = setTimeout(() => {
-    document.getSelection().removeAllRanges()
-  }, 2500)
 }
 </script>
 
 <style scoped lang="scss">
-.server-ip {
-  margin-right: 2px;
-  font-size: 13px;
-  opacity: .75;
+.minehub-server-ip {
+  line-height: 1.425;
+  font-size: 0.875rem;
   user-select: all;
+  opacity: 0.6;
 }
 </style>

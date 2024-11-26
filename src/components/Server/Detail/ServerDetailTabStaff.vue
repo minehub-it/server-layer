@@ -48,7 +48,7 @@ function openPlayerDialog(value: any) {
 </script>
 
 <style lang="scss">
-#server-staff {
+#minehub-server-staff {
   @media (max-width: 919px) {
     padding-bottom: 1px;
 

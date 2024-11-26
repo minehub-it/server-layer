@@ -5,6 +5,7 @@ export const useServerFilterStore = defineStore('server/filter', () => {
   })
 
   const platform: Ref<string | null> = ref(null)
+  const favorite: Ref<boolean> = ref(false)
   const category: Ref<string | null> = ref(null)
   const online: Ref<boolean | null> = ref(null)
   const keyword: Ref<string | null> = ref(null)
@@ -24,6 +25,10 @@ export const useServerFilterStore = defineStore('server/filter', () => {
     }
 
     keyword.value = ''
+  }
+
+  function setFavorite(value) {
+    favorite.value = value
   }
 
   function setPlatform(value) {
@@ -78,8 +83,11 @@ export const useServerFilterStore = defineStore('server/filter', () => {
     setOrder,
     toggleOrder,
     setCategory,
+    setFavorite,
     setPlatform,
     setOnline,
     setKeyword,
   }
-}, { persist: true })
+}, {
+  persist: piniaPluginPersistedstate.cookies()
+})
