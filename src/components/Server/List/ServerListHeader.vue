@@ -48,7 +48,13 @@ const categorySelected = ref(null)
         @update:modelValue="value => serverFilterStore.setKeyword(value)"
       >
         <template v-slot:append-inner>
-          <v-icon>mdi-magnify</v-icon>
+          <v-btn icon class="mt-n3">
+            <v-icon :size="23">mdi-magnify</v-icon>
+          </v-btn>
+          <v-btn icon class="mt-n3 ml-1">
+            <v-icon :size="30">mdi-plus</v-icon>
+            <ServerAddDialog />
+          </v-btn>
         </template>
       </v-text-field>
     </template>
