@@ -34,3 +34,10 @@ export function convertPlatformIdToSlug(platformId: string) {
 export function serverRoute(slug: string) {
   return `/server/${slug}`
 }
+
+export async function serverCategoryRouteValidation(route: any) {
+  const serverCategoryStore = useServerCategoryStore()
+  await serverCategoryStore.initialize()
+
+  return serverCategoryStore.isCategoryValid(String(route.params.category))
+}

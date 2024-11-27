@@ -13,10 +13,7 @@ serverFilterStore.setPlatform('be')
 serverFilterStore.setCategory(String(route.params.category))
 
 definePageMeta({
-  validate: async (route) => {
-    const { isCategoryValid } = useServerCategoryStore()
-    return isCategoryValid(String(route.params.category))
-  }
+  validate: serverCategoryRouteValidation
 })
 
 useHead({
