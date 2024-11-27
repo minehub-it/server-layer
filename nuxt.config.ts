@@ -24,6 +24,6 @@ export default defineNuxtConfig({
     }
   },
   imports: {
-    dirs: ['api', 'composables', 'stores', 'utils']
+    dirs: ['api', 'const', 'composables', 'stores', 'utils']
   },
 })

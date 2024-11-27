@@ -1,5 +1,3 @@
-import api from "~/api";
-
 export const useServerDetailStore = defineStore('server/detail', () => {
   const projectConfig = useProjectConfig()
   const themeStore = useThemeStore()
