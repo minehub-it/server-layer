@@ -111,6 +111,8 @@ export const useServerListStore = defineStore('server/list', () => {
 
     async function fetchPlayers() {
         await serverPingStore.pingServers(servers.value)
+
+        setTimeout(fetchPlayers, 15000);
     }
 
     return {
