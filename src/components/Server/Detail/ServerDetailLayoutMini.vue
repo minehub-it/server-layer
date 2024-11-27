@@ -1,18 +1,19 @@
 <template>
   <v-row class="py-2">
     <v-col class="flex-grow-0 px-5">
-      <nuxt-link :to="`/server/${server.slug}`">
+      <nuxt-link :to="serverRoute(server)">
         <ServerDetailIcon class="mr-2" :image="server.favicon" style="margin-top: -2px;" />
       </nuxt-link>
     </v-col>
     <v-col class="flex-grow-1" align-self="center">
       <v-row>
         <v-col class="pa-0">
-          <nuxt-link :to="`/server/${server.slug}`" class="color-inherit">
-            <ServerDetailTitle class="position-relative" :title="server.name" />
+          <nuxt-link :to="serverRoute(server)" class="color-inherit">
+            <ServerDetailTitle class="position-relative" :title="server.name">
+              <ServerDetailOnline v-if="server.online" />
+            </ServerDetailTitle>
           </nuxt-link>
 
-          <ServerDetailOnline v-if="server.online" />
         </v-col>
         <v-col class="pa-0 pt-2 text-right" align-self="center">
           <ServerDetailPlayers style="position: relative; top: 8px;" :server="server" />
@@ -21,7 +22,7 @@
 
       <div>
         <v-row>
-          <v-col class="pa-0 pt-3">
+          <v-col class="pa-0 pt-3 mb-n1">
             <ServerDetailIp :address="server.address" />
           </v-col>
           <v-col class="pa-0 pt-3 text-right">
@@ -57,9 +58,9 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 
-const props = defineProps({
-  server: Object as () => IServer,
-})
+const props = defineProps<{
+  server: IServer,
+}>()
 
 const emit = defineEmits(['connecting'])
 

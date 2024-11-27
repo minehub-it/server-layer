@@ -21,7 +21,7 @@ function onFavoriteToggle() {
   >
 
     <template #prepend>
-      <nuxt-link class="d-inline-block px-3 mt-6 mr-1" :to="serverRoute(server.slug)">
+      <nuxt-link class="d-inline-block px-3 mt-6 mr-1" :to="serverRoute(server)">
         <ServerDetailIcon :image="server.favicon" :name="server.name"/>
       </nuxt-link>
     </template>

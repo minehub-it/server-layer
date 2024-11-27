@@ -7,7 +7,7 @@
       />
       <v-progress-linear :color="props.server.themeColor" :indeterminate="connecting" />
 
-      <v-card-text class="py-5 mb-1">
+      <v-card-text class="py-5">
         <ServerDetailLayoutMini
           :server="props.server"
           @connecting="onConnecting"

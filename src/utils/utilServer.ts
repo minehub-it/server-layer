@@ -31,8 +31,9 @@ export function convertPlatformIdToSlug(platformId: string) {
   }
 }
 
-export function serverRoute(slug: string) {
-  return `/server/${slug}`
+export function serverRoute(server: IServer) {
+  return '#'
+  //return `/server/${server._stem.split('/')[2]}`
 }
 
 export async function serverCategoryRouteValidation(route: any) {
