@@ -1,8 +1,9 @@
 <template>
-  <span
-    class="minehub-server-name font-weight-black text-truncate"
-    v-text="title"
-  />
+  <div class="minehub-server-name font-weight-black text-truncate">
+    {{title}}
+
+    <slot />
+  </div>
 </template>
 
 <script setup lang="ts">

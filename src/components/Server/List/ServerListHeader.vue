@@ -26,38 +26,31 @@ const categorySelected = ref(null)
         :to="'/lista-server-' + convertPlatformIdToSlug(filters.platform)"
       -->
       <LogoTextcraft
-        v-if="filters.platform"
-        name="serverlist" class="mt-3 mt-sm-1 mb-2 mb-md-0"
+        v-if="filters.platform || filters.favorite"
+        name="serverlist" class="mt-3 mb-2 mb-lg-0 mt-sm-1"
         :description="`Lista server per Minecraft: ${convertPlatformIdToFullName(filters.platform)}`"
         :alt="`Lista dei server italiani per Minecraft: ${convertPlatformIdToFullName(filters.platform)}`"
       />
       <v-chip
-          class="minehub-serverlist-edition text-overline" size="small"
+          v-if="filters.platform"
+          class="minehub-serverlist-edition hidden-md-and-down text-overline" size="small"
           :text="filters.platform"
       />
-      <!--
-      <div class="text-h5 mt-md-3 mt-0 mb-sm-0 mb-2">
-        Lista server per <br class="hidden-md-and-up" />
-        <strong>Minecraft: {{ convertPlatformIdToFullName(filters.platform) }}</strong>
-      </div>
-      -->
     </template>
 
     <template v-slot:search>
-      <client-only>
-        <v-text-field
-          class="minehub-smart-search-1"
-          chips variant="plain"
-          placeholder="Cerca server"
-          hide-details
-          v-model="search.text"
-          @update:modelValue="value => serverFilterStore.setKeyword(value)"
-        >
-          <template v-slot:append-inner>
-            <v-icon>mdi-magnify</v-icon>
-          </template>
-        </v-text-field>
-      </client-only>
+      <v-text-field
+        class="minehub-smart-search-1"
+        chips variant="plain"
+        placeholder="Cerca server"
+        hide-details
+        v-model="search.text"
+        @update:modelValue="value => serverFilterStore.setKeyword(value)"
+      >
+        <template v-slot:append-inner>
+          <v-icon>mdi-magnify</v-icon>
+        </template>
+      </v-text-field>
     </template>
 
     <template v-slot:categoriesWide>

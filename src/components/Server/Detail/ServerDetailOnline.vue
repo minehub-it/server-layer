@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   tooltip: {
     type: Boolean,
     default: true,
@@ -23,10 +23,10 @@ const props = defineProps({
   display: inline-block;
   background-color: #15a018;
   box-shadow: inset 0 1px 2px 0 #ffffff30;
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  margin-left: 6px;
-  vertical-align: 0;
+  margin-left: 4px;
+  vertical-align: 2px;
 }
 </style>

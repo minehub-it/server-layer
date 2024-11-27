@@ -1,25 +1,24 @@
 <template>
-  <v-row>
+  <v-row class="py-2">
     <v-col class="flex-grow-0 px-5">
       <nuxt-link :to="`/server/${server.slug}`">
         <ServerDetailIcon class="mr-2" :image="server.favicon" style="margin-top: -2px;" />
       </nuxt-link>
     </v-col>
-    <v-col class="flex-grow-1">
-      <div>
-        <v-row>
-          <v-col class="pa-0 pt-2">
-            <nuxt-link :to="`/server/${server.slug}`" class="color-inherit">
-              <ServerDetailTitle class="position-relative" :title="server.name" />
-            </nuxt-link>
+    <v-col class="flex-grow-1" align-self="center">
+      <v-row>
+        <v-col class="pa-0">
+          <nuxt-link :to="`/server/${server.slug}`" class="color-inherit">
+            <ServerDetailTitle class="position-relative" :title="server.name" />
+          </nuxt-link>
 
-            <ServerDetailOnline v-if="server.online" />
-          </v-col>
-          <v-col class="pa-0 pt-2 text-right">
-            <ServerDetailPlayers :server="server" />
-          </v-col>
-        </v-row>
-      </div>
+          <ServerDetailOnline v-if="server.online" />
+        </v-col>
+        <v-col class="pa-0 pt-2 text-right" align-self="center">
+          <ServerDetailPlayers style="position: relative; top: 8px;" :server="server" />
+        </v-col>
+      </v-row>
+
       <div>
         <v-row>
           <v-col class="pa-0 pt-3">
@@ -31,24 +30,22 @@
         </v-row>
       </div>
     </v-col>
-    <v-col class="flex-grow-0 text-right" style="min-width: 160px;">
-      <div style="margin-top: -3px;">
-        <v-tooltip text="Vai al sito web" location="top end">
-          <template v-slot:activator="{ props }">
-            <v-btn flat class="px-0 mr-2" :min-width="30" v-bind="props" :href="server.web" target="_blank">
-              <v-icon size="23px" style="margin-top: -2px;">mdi-web</v-icon>
-            </v-btn>
-          </template>
-        </v-tooltip>
+    <v-col class="flex-grow-0 text-right" align-self="center" style="min-width: 160px;">
+      <v-tooltip v-if="server.web" text="Vai al sito web" location="top end">
+        <template v-slot:activator="{ props }">
+          <v-btn flat class="px-0 mr-2" :min-width="30" v-bind="props" :href="server.web" target="_blank">
+            <v-icon size="23px" style="margin-top: -2px;">mdi-web</v-icon>
+          </v-btn>
+        </template>
+      </v-tooltip>
 
-        <v-tooltip text="Collegati al server Minecraft" location="top end">
-          <template v-slot:activator="{ props }">
-            <v-btn flat class="px-0" :min-width="40" @click="onCopyServerAddress" v-bind="props">
-              <v-icon size="22px">mdi-login-variant</v-icon>
-            </v-btn>
-          </template>
-        </v-tooltip>
-      </div>
+      <v-tooltip text="Collegati al server Minecraft" location="top end">
+        <template v-slot:activator="{ props }">
+          <v-btn flat class="px-0 mt-n1" :min-width="40" @click="onCopyServerAddress" v-bind="props">
+            <v-icon :size="26">mdi-login-variant</v-icon>
+          </v-btn>
+        </template>
+      </v-tooltip>
 
       <v-snackbar v-model="snackbar">
         Copiato l'IP in memoria

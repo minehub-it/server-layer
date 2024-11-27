@@ -1,9 +1,9 @@
 <template>
   <v-card rounded>
-    <v-img src="https://www.minecraft.net/content/dam/games/minecraft/key-art/bedrock-header.jpg.transform/minecraft-image-large/image.jpg" />
+    <img src="https://www.minecraft.net/content/dam/games/minecraft/key-art/bedrock-header.jpg.transform/minecraft-image-large/image.jpg" />
 
-    <v-card-text>
-      <ServerDetailTitle class="pt-3" title="SlimeCraft" />
+    <v-card-text class="mb-n2">
+      <ServerDetailTitle title="SlimeCraft" />
       <ServerDetailIp address="mc.slimecraft.net" />
     </v-card-text>
   </v-card>
@@ -14,5 +14,10 @@
 </script>
 
 <style scoped>
-
+img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  vertical-align: middle;
+}
 </style>

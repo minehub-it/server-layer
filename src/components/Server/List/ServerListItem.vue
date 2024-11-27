@@ -15,15 +15,16 @@ const {categoriesNames} = useServerCategoryStore()
   >
 
     <template #prepend>
-      <nuxt-link class="d-inline-block px-3 mt-8 mr-1" :to="serverRoute(server.slug)">
+      <nuxt-link class="d-inline-block px-3 mt-6 mr-1" :to="serverRoute(server.slug)">
         <ServerDetailIcon :image="server.favicon" :name="server.name"/>
       </nuxt-link>
     </template>
 
     <template #item>
       <div>
-        <ServerDetailTitle :title="server.name" />
-        <ServerDetailOnline v-if="server.online" />
+        <ServerDetailTitle :title="server.name">
+          <ServerDetailOnline v-if="server.online" />
+        </ServerDetailTitle>
       </div>
       <ServerDetailIp :address="server.address"/>
     </template>

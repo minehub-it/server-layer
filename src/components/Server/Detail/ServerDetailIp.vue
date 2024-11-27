@@ -1,16 +1,3 @@
-<template>
-  <div
-    class="minehub-server-ip text-truncate" @click="copyIp"
-    v-text="props.address"
-  />
-
-  <client-only>
-    <v-snackbar v-model="snackbar">
-      Copiato l'IP in memoria
-    </v-snackbar>
-  </client-only>
-</template>
-
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 
@@ -28,8 +15,22 @@ function copyIp(e) {
 }
 </script>
 
+<template>
+  <div
+    class="minehub-server-ip text-truncate" @click="copyIp"
+    v-text="props.address"
+  />
+
+  <client-only>
+    <v-snackbar v-model="snackbar">
+      Copiato l'IP in memoria
+    </v-snackbar>
+  </client-only>
+</template>
+
 <style scoped lang="scss">
 .minehub-server-ip {
+  display: inline-block;
   line-height: 1.425;
   font-size: 0.875rem;
   user-select: all;

@@ -26,25 +26,25 @@ function onServerDialogPreview(server: IServer) {
 </script>
 
 <template>
-  <v-container>
-    <ServerListHeader class="mt-2" />
-    <ServerFeatured class="mb-3" />
+  <ServerListHeader class="mt-2" />
+  <ServerFeatured class="mb-3" />
 
-    <ServerListContentHead />
+  <ServerListContentHead />
 
-    <ServerListContent
-      :table="table"
-      :servers="list"
-      @serverDialogPreview="onServerDialogPreview"
+  <ServerListContent
+    :table="table"
+    :servers="list"
+    @serverDialogPreview="onServerDialogPreview"
+  />
+
+  <client-only>
+    <ServerDetailDialog
+      :server="serverDetailReactive"
+      @close="serverDetail = null"
     />
+  </client-only>
 
-    <client-only>
-      <ServerDetailDialog
-        :server="serverDetailReactive"
-        @close="serverDetail = null"
-      />
-    </client-only>
+  <ServerListFetchPlayersWatcher />
 
-    <ServerListFetchPlayersWatcher />
-  </v-container>
+  <MainFooter />
 </template>
