@@ -1,11 +1,17 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   server: IServer
 }>()
 
 const emit = defineEmits(['detailPreviewClick'])
 
-const {categoriesNames} = useServerCategoryStore()
+const serverFavoriteStore = useServerFavoriteStore()
+
+function onFavoriteToggle() {
+  serverFavoriteStore[
+      !serverFavoriteStore.isFavorite(props.server.address) ? 'add' : 'remove'
+  ](props.server.address)
+}
 </script>
 
 <template>
@@ -36,6 +42,12 @@ const {categoriesNames} = useServerCategoryStore()
     <template #append>
       <ServerDetailPlayers
           :server="server"
+          class="mr-8"
+      />
+
+      <ServerDetailFavorite
+          :is-favorite="serverFavoriteStore.isFavorite(server.address)"
+          @click="onFavoriteToggle"
           class="mr-8"
       />
 

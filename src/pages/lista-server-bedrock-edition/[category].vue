@@ -11,6 +11,7 @@ const route = useRoute()
 
 serverFilterStore.setPlatform('be')
 serverFilterStore.setCategory(String(route.params.category))
+serverFilterStore.setFavorite(false)
 
 definePageMeta({
   validate: serverCategoryRouteValidation

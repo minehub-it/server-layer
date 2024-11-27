@@ -1,6 +1,7 @@
 export const useServerListStore = defineStore('server/list', () => {
     const serverPingStore = useServerPingStore()
     const serverFilterStore = useServerFilterStore()
+    const serverFavoriteStore = useServerFavoriteStore()
     const serverStorageStore = useServerStorageStore()
     const servers: Ref<IServer[]> = ref([])
 
@@ -37,7 +38,12 @@ export const useServerListStore = defineStore('server/list', () => {
         let tmpList = servers.value
             .filter(server => server.slug !== '')
             .filter(server => server.online === true)
-        //.filter(server => server.hidden === false)
+
+        if (serverFilterStore.filters.favorite) {
+            tmpList = tmpList.filter(server => {
+                return serverFavoriteStore.favorites.includes(server.address)
+            })
+        }
 
         if (serverFilterStore.filters.platform) {
             tmpList = tmpList.filter(server => server.platform.includes(serverFilterStore.filters.platform))
@@ -82,6 +88,10 @@ export const useServerListStore = defineStore('server/list', () => {
             tmpList = tmpList.sort((a, b) => {
                 const sortA = a[sortBy]
                 const sortB = b[sortBy]
+
+                if (serverFavoriteStore.favorites.includes(a.address)) {
+                    return -1
+                }
 
                 // poi ordina in base a ordine della tabella (preferenze utente)
                 if (sortDesc) {

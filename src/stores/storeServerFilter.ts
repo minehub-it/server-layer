@@ -12,6 +12,7 @@ export const useServerFilterStore = defineStore('server/filter', () => {
 
   const filters = computed(() => ({
     platform: platform.value,
+    favorite: favorite.value,
     category: category.value,
     online: online.value,
     keyword: keyword.value,

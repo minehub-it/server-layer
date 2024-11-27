@@ -7,6 +7,7 @@ const serverFilterStore = useServerFilterStore()
 
 serverFilterStore.setPlatform('be')
 serverFilterStore.setCategory(null)
+serverFilterStore.setFavorite(false)
 
 useHead({
   title: 'Lista Server per Minecraft: Bedrock Edition - Minecraft ITALIA',

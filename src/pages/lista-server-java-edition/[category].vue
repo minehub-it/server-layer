@@ -11,20 +11,18 @@ const route = useRoute()
 
 serverFilterStore.setPlatform('je')
 serverFilterStore.setCategory(String(route.params.category))
+serverFilterStore.setFavorite(false)
 
 definePageMeta({
-  validate: async (route) => {
-    const { isCategoryValid } = useServerCategoryStore()
-    return isCategoryValid(String(route.params.category))
-  }
+  validate: serverCategoryRouteValidation
 })
 
 useHead({
-  title: `Lista Server ${categoryDetail.name} per Minecraft: Java Edition`,
+  title: `Lista Server ${categoryDetail.value.name} per Minecraft: Java Edition`,
   meta: [
     {
       name: `description`,
-      content: categoryDetail.description,
+      content: categoryDetail.value.description,
     }
   ],
 })

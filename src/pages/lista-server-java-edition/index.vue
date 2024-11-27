@@ -7,6 +7,7 @@ const serverFilterStore = useServerFilterStore()
 
 serverFilterStore.setPlatform('je')
 serverFilterStore.setCategory(null)
+serverFilterStore.setFavorite(false)
 
 useHead({
   title: 'Lista Server per Minecraft: Java Edition - Minecraft ITALIA',
