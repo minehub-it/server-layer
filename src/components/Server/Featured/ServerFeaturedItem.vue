@@ -3,8 +3,8 @@
     <img src="https://www.minecraft.net/content/dam/games/minecraft/key-art/bedrock-header.jpg.transform/minecraft-image-large/image.jpg" />
 
     <v-card-text class="mb-n2">
-      <ServerDetailTitle title="SlimeCraft" />
-      <ServerDetailIp address="mc.slimecraft.net" />
+      <ServerDetailTitle title="Server Minecraft in evidenza" />
+      <ServerDetailIp address="riservato ai server owner Premium" />
     </v-card-text>
   </v-card>
 </template>
