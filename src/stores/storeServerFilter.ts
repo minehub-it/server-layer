@@ -28,19 +28,19 @@ export const useServerFilterStore = defineStore('server/filter', () => {
     keyword.value = ''
   }
 
-  function setFavorite(value) {
+  function setFavorite(value: boolean) {
     favorite.value = value
   }
 
-  function setPlatform(value) {
+  function setPlatform(value: string) {
     platform.value = value
   }
 
-  function setOnline(value) {
+  function setOnline(value: boolean) {
     online.value = value
   }
 
-  function setKeyword(value) {
+  function setKeyword(value: string) {
     keyword.value = value
   }
 
