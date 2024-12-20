@@ -1,7 +1,7 @@
 <template>
-  <v-avatar rounded :size="36" class="minehub-server-favicon">
+  <div class="minehub-server-favicon">
     <img :src="image" :alt="name" />
-  </v-avatar>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -13,8 +13,9 @@ defineProps<{
 
 <style scoped lang="scss">
 img {
-  width: 100%;
-  height: 100%;
+  width: 36px;
+  aspect-ratio: 1;
+  border-radius: 4px;
   object-fit: cover;
 }
 </style>

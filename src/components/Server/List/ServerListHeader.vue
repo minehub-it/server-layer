@@ -49,7 +49,7 @@ const categorySelected = ref(null)
       >
         <template v-slot:append-inner>
           <v-btn icon class="mt-n3">
-            <v-icon :size="23">mdi-magnify</v-icon>
+            <v-icon :size="24">mdi-magnify</v-icon>
           </v-btn>
           <v-btn icon class="mt-n3 ml-1">
             <v-icon :size="30">mdi-plus</v-icon>
