@@ -1,3 +1,30 @@
+<script setup lang="ts">
+const props = defineProps<{
+  server: IServer,
+}>()
+
+const serverDetailStore = useServerDetailStore()
+
+const dialog: Ref<boolean> = ref(!!props.server)
+
+const connecting = ref(false)
+const connectingTimeout = ref(0)
+
+function onConnecting() {
+  connecting.value = true
+
+  clearTimeout(connectingTimeout.value)
+  connectingTimeout.value = setTimeout(() => connecting.value = false, 30000)
+}
+
+watch(() => dialog.value, (value) => {
+  if (!value) {
+    serverDetailStore.setServer(undefined)
+    connecting.value = false
+  }
+})
+</script>
+
 <template>
   <v-dialog v-model="dialog" width="680px" max-width="90%">
     <v-card v-if="props.server" width="680px" max-width="90%" class="ma-auto">
@@ -16,39 +43,6 @@
     </v-card>
   </v-dialog>
 </template>
-
-<script setup lang="ts">
-import {Ref} from "vue";
-
-const props = defineProps({
-  server: Object as () => IServer,
-})
-
-const dialog: Ref<boolean> = ref(!!props.server)
-
-const emit = defineEmits(['close'])
-
-const connecting = ref(false)
-const connectingTimeout = ref(false)
-
-function onConnecting() {
-  connecting.value = true
-
-  clearTimeout(connectingTimeout.value)
-  connectingTimeout.value = setTimeout(() => connecting.value = false, 30000)
-}
-
-watch(() => props.server, (value) => {
-  if (value) dialog.value = true
-})
-
-watch(() => dialog.value, (value) => {
-  if (!value) {
-    emit('close')
-    connecting.value = false
-  }
-})
-</script>
 
 <style scoped lang="scss">
 

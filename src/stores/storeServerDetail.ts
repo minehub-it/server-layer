@@ -1,7 +1,4 @@
 export const useServerDetailStore = defineStore('server/detail', () => {
-  const projectConfig = useProjectConfig()
-  const themeStore = useThemeStore()
-
   const server: any = ref(null)
 
   async function fetchServer(slug: string) {
@@ -14,6 +11,8 @@ export const useServerDetailStore = defineStore('server/detail', () => {
 
   function setServer(data: IServer) {
     server.value = data
+
+    console.log('SETTA', data)
 
     if (server.value && server.value.themeColor) {
       //themeStore.setThemeColor(server.value.themeColor)

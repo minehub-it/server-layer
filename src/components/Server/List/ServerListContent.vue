@@ -3,13 +3,6 @@ defineProps<{
   table: any
   servers: IServer[]
 }>()
-
-const emit = defineEmits(['serverDialogPreview'])
-
-const tableOrder: any = reactive({
-  sortBy: null,
-  sortDesc: null,
-})
 </script>
 
 <template>
@@ -18,7 +11,6 @@ const tableOrder: any = reactive({
         v-for="server of servers"
         class="mb-5"
         :server="server"
-        @detailPreviewClick="emit('serverDialogPreview', server)"
     />
   </template>
   <template v-else>

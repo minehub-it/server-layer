@@ -29,7 +29,6 @@
             <ServerDetailPlay
                 class="mt-3"
                 color="white"
-                @click="emit('detailPreviewClick', server)"
             />
           </div>
 
@@ -56,8 +55,6 @@ const props = defineProps({
   server: Object,
   tabs: Object,
 })
-
-const emit = defineEmits(['detailPreviewClick'])
 
 const snackbarVote = ref(false)
 const snackbarVoteMessage = ref('')

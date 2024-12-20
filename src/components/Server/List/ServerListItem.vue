@@ -3,8 +3,7 @@ const props = defineProps<{
   server: IServer
 }>()
 
-const emit = defineEmits(['detailPreviewClick'])
-
+const serverDetailStore = useServerDetailStore()
 const serverFavoriteStore = useServerFavoriteStore()
 
 function onFavoriteToggle() {
@@ -53,7 +52,7 @@ function onFavoriteToggle() {
 
       <ServerDetailPlay
           class="mr-3"
-          @click="emit('detailPreviewClick', server)"
+          @click="serverDetailStore.setServer(server)"
       />
     </template>
   </v-card>

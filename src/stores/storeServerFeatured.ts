@@ -1,13 +1,7 @@
 import {defineStore} from "pinia";
-import {useAxios} from "~/composables/axios.client";
-import { useStorage } from '@vueuse/core'
 import api from "~/api";
-import {useThemeStore} from "~/stores/storeTheme";
 
 export const useServerFeaturedStore = defineStore('server/featured', () => {
-  const projectConfig = useProjectConfig()
-  const themeStore = useThemeStore()
-
   const server: any = ref(null)
 
   async function fetchServer(slug: string) {
@@ -22,9 +16,9 @@ export const useServerFeaturedStore = defineStore('server/featured', () => {
     server.value = data
 
     if (server.value && server.value.themeColor) {
-      themeStore.setThemeColor(server.value.themeColor)
+      //themeStore.setThemeColor(server.value.themeColor)
     } else {
-      themeStore.resetThemeColor()
+      //themeStore.resetThemeColor()
     }
   }
 
