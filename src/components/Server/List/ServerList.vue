@@ -31,6 +31,8 @@ function onServerDialogPreview(server: IServer) {
 
   <ServerListContentHead />
 
+  <ServerListToolbar />
+
   <ServerListContent
     :table="table"
     :servers="list"
