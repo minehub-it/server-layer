@@ -1,11 +1,11 @@
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.hook("page:finish", async (a) => {
+    nuxtApp.hook("page:finish", (a) => {
         const serverListStore = useServerListStore()
         const serverStorageStore = useServerStorageStore()
 
-        if (import.meta.client) {
+        callOnce(async () => {
             await serverStorageStore.restore()
             await serverListStore.fetchPlayers()
-        }
+        })
     })
 });
