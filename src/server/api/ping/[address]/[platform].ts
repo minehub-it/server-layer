@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
     }
 
     if (serversCache.hasOwnProperty(address)) {
-        if (Date.now() - serversCache[address].updatedAt < 60000) {
+        if (Date.now() - serversCache[address].updatedAt < 20000) {
             return serversCache[address]
         }
     }
@@ -29,6 +29,12 @@ export default defineEventHandler(async (event) => {
     let ping
     let result: any = {
         updatedAt: new Date(),
+    }
+
+    if (!serversCache.hasOwnProperty(address)) {
+        serversCache[address] = result
+    } else {
+        serversCache[address].updatedAt = new Date()
     }
 
     switch (platform) {

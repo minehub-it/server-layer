@@ -21,7 +21,18 @@ export const useServerStorageStore = defineStore('server/storage', () => {
         const storedServers = await db.get(storageName, storageKey)
 
         if (storedServers) {
-            serverListStore.servers = JSON.parse(storedServers)
+            let server
+
+            for (const storedServer of JSON.parse(storedServers)) {
+                server = serverListStore.servers.find(server => server.address === storedServer.address)
+
+                if (server) {
+                    server.online = storedServer.online
+                    server.players = storedServer.players
+                    server.slots = storedServer.slots
+                    server.favicon = storedServer.favicon
+                }
+            }
         }
     }
 

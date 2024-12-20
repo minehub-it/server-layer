@@ -51,7 +51,5 @@ watch(() => dialog.value, (value) => {
 </script>
 
 <style scoped lang="scss">
-.minehub-dialog-background {
-  background-image: url('assets/images/server/bg-wool-dark.png');
-}
+
 </style>

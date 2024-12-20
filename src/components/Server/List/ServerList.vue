@@ -42,9 +42,9 @@ function onServerDialogPreview(server: IServer) {
       :server="serverDetailReactive"
       @close="serverDetail = null"
     />
-  </client-only>
 
-  <ServerListFetchPlayersWatcher />
+    <ServerListFetchPlayersWatcher />
+  </client-only>
 
   <MainFooter />
 </template>

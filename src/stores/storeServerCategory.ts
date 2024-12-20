@@ -3,6 +3,10 @@ export const useServerCategoryStore = defineStore('server/category', () => {
 
   const categories: Ref<IServerCategory[]> = ref([])
 
+  const categoriesSlug = computed(() => {
+    return categories.value.map(category => category.slug)
+  })
+
   const categoryDetail = computed(() => {
     return categories.value.find(c => c.slug === serverFilterStore.filters.category)
   })
@@ -29,6 +33,7 @@ export const useServerCategoryStore = defineStore('server/category', () => {
 
   return {
     categories,
+    categoriesSlug,
     categoryDetail,
     initialize,
     isCategoryValid,

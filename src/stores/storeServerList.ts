@@ -1,5 +1,6 @@
 export const useServerListStore = defineStore('server/list', () => {
     const serverPingStore = useServerPingStore()
+    const serverCategoryStore = useServerCategoryStore()
     const serverFilterStore = useServerFilterStore()
     const serverFavoriteStore = useServerFavoriteStore()
     const serverStorageStore = useServerStorageStore()
@@ -13,9 +14,18 @@ export const useServerListStore = defineStore('server/list', () => {
         const queryContentKey = `/server/list`
 
         await useAsyncData(queryContentKey, async () => {
+
             servers.value = await queryContent(queryContentKey).find().then(servers => {
                 return servers.map(server => {
+
+                    // filter categories by known categories
+                    server.categories = server.categories.filter(category => {
+                        return serverCategoryStore.categoriesSlug.includes(category.toLowerCase())
+                    })
+
+                    // prepare server keywords
                     server.keywords = server.name + ' ' + server.address + ' ' + server.categories.join(' ')
+
                     return server
                 })
             })
@@ -44,24 +54,24 @@ export const useServerListStore = defineStore('server/list', () => {
             .filter(server => server.slug !== '')
             .filter(server => server.online === true)
 
+        // filter by favorite
         if (serverFilterStore.filters.favorite) {
             tmpList = tmpList.filter(server => {
                 return serverFavoriteStore.favorites.includes(server.address)
             })
         }
 
+        // filter by platform
         if (serverFilterStore.filters.platform) {
             tmpList = tmpList.filter(server => server.platform.includes(serverFilterStore.filters.platform))
         }
 
-        if (serverFilterStore.filters.category === 'premium') {
-            //tmpList = []
-            tmpList = tmpList.filter(server => server.premium === true)
-        } else if (serverFilterStore.filters.category !== null) {
-            //tmpList = []
+        // filter by category
+        if (serverFilterStore.filters.category !== null) {
             tmpList = tmpList.filter(server => server.categories.includes(serverFilterStore.filters.category))
         }
 
+        // filter by keyword
         if (serverFilterStore.filters.keyword) {
             tmpList = tmpList.filter(server => {
                 return (
@@ -88,7 +98,7 @@ export const useServerListStore = defineStore('server/list', () => {
             sortDesc = true
         }
 
-        // ordina per sortBy
+        // sort by
         if (sortBy) {
             tmpList = tmpList.sort((a, b) => {
                 const sortA = a[sortBy]

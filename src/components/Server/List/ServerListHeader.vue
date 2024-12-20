@@ -52,7 +52,7 @@ const categorySelected = ref(null)
             <v-icon :size="24">mdi-magnify</v-icon>
           </v-btn>
           <v-btn icon class="mt-n3 ml-1">
-            <v-icon :size="30">mdi-plus</v-icon>
+            <v-icon :size="31">mdi-plus</v-icon>
             <ServerAddDialog />
           </v-btn>
         </template>
