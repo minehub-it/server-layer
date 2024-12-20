@@ -12,8 +12,6 @@ export const useServerDetailStore = defineStore('server/detail', () => {
   function setServer(data: IServer) {
     server.value = data
 
-    console.log('SETTA', data)
-
     if (server.value && server.value.themeColor) {
       //themeStore.setThemeColor(server.value.themeColor)
     } else {
