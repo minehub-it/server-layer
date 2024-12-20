@@ -2,6 +2,11 @@
   "name": "minehub-frontend-layer-server",
   "private": true,
   "type": "module",
+  "version": "7.0.0",
+  "author": {
+    "name": "dxlliv",
+    "url": "https://github.com/dxlliv"
+  },
   "main": "./nuxt.config.ts",
   "scripts": {
     "dev": "nuxi dev .playground",
