@@ -9,7 +9,7 @@ export const useServerAddStore = defineStore('server/add', () => {
     const fieldPlatform = ref(['je'])
 
     const href = computed(() => {
-        return `https://github.com/minehub-it/server/new/main/list?filename=/${slugify(fieldName.value).toLowerCase()}.md&value=---%0Aname: ${fieldName.value}%0Aaddress: ${fieldAddress.value}%0Aplatform: [ ${fieldPlatform.value.join(', ')} ]%0Acategories: [ ${fieldCategories.value.join(', ')} ]%0A---`
+        return `https://github.com/minehub-it/server/new/main/list?filename=/${slugify(fieldName.value).toLowerCase()}.md&value=---%0Aname: "${fieldName.value}"%0Aaddress: "${fieldAddress.value.toLowerCase()}"%0Aplatform: [ "${fieldPlatform.value.join(', ')}" ]%0Acategories: [ "${fieldCategories.value.join('", "')}" ]%0A---`
     })
 
     const rules = {
@@ -41,7 +41,7 @@ export const useServerAddStore = defineStore('server/add', () => {
     function reset() {
         fieldName.value = fieldAddress.value = ""
         fieldCategories.value = []
-        fieldPlatform.value = ['je']
+        fieldPlatform.value = ["je"]
 
         $v.value.$reset()
     }
