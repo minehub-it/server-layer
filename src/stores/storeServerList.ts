@@ -13,7 +13,12 @@ export const useServerListStore = defineStore('server/list', () => {
         const queryContentKey = `/server/list`
 
         await useAsyncData(queryContentKey, async () => {
-            servers.value = await queryContent(queryContentKey).find()
+            servers.value = await queryContent(queryContentKey).find().then(servers => {
+                return servers.map(server => {
+                    server.keywords = server.name + ' ' + server.address + ' ' + server.categories.join(' ')
+                    return server
+                })
+            })
             return true
         })
     }

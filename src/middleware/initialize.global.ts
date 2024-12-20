@@ -3,7 +3,7 @@ export default defineNuxtRouteMiddleware(async to => {
     const serverStorageStore = useServerStorageStore()
     const serverCategoryStore = useServerCategoryStore()
 
-    if (serverCategoryStore.categories.length === 0) {
+    if (serverListStore.servers.length === 0) {
         await serverCategoryStore.initialize()
         await serverListStore.fetchFromContent()
     }

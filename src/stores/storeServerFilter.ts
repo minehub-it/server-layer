@@ -8,7 +8,7 @@ export const useServerFilterStore = defineStore('server/filter', () => {
   const favorite: Ref<boolean> = ref(false)
   const category: Ref<string | null> = ref(null)
   const online: Ref<boolean | null> = ref(null)
-  const keyword: Ref<string | null> = ref(null)
+  const keyword: Ref<string> = ref('')
 
   const filters = computed(() => ({
     platform: platform.value,
