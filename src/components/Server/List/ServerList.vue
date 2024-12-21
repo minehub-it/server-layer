@@ -21,7 +21,9 @@ const table = {
 
   <ServerListContentHead/>
 
-  <ServerListToolbar/>
+  <ServerListToolbar
+    v-if="list.length > 0"
+  />
 
   <ServerListContent
       :table="table"
@@ -37,5 +39,5 @@ const table = {
     <ServerListFetchPlayersWatcher/>
   </client-only>
 
-  <MainFooter/>
+  <MainFooter v-if="list.length > 0" />
 </template>
