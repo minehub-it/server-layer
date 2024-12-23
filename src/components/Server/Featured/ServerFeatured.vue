@@ -7,17 +7,28 @@ const serversFeatured = [
 </script>
 
 <template>
-  <v-row>
-    <v-col>
+  <swiper-container
+      :slides-per-view="1"
+      :space-between="24"
+      :breakpoints="{
+        959: {
+          slidesPerView: 2,
+        },
+        1279: {
+          slidesPerView: 3,
+        },
+      }"
+  >
+    <swiper-slide>
       <ServerFeaturedItem :server="serversFeatured[0]" />
-    </v-col>
-    <v-col>
+    </swiper-slide>
+    <swiper-slide>
       <ServerFeaturedItem :server="serversFeatured[1]" />
-    </v-col>
-    <v-col>
+    </swiper-slide>
+    <swiper-slide>
       <ServerFeaturedItem :server="serversFeatured[2]" />
-    </v-col>
-  </v-row>
+    </swiper-slide>
+  </swiper-container>
 </template>
 
 <style scoped lang="scss">
