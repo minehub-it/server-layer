@@ -25,19 +25,5 @@ definePageMeta({
 </template>
 
 <style scoped lang="scss">
-.minehub-slider-vertical {
-  height: 100dvh;
-  max-width: 1200px;
-  margin: 0 auto;
 
-  @media(max-width: 959px) {
-    height: calc(100dvh - 100px) !important;
-  }
-}
-
-swiper-container {
-  > swiper-slide:last-child {
-    margin-bottom: 0 !important;
-  }
-}
 </style>
