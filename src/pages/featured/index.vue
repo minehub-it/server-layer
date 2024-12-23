@@ -7,7 +7,7 @@ definePageMeta({
 <template>
   <SliderVertical
       :slides-per-view="2.5" :space-between="24"
-      class="pa-6 pt-0 pt-md-6"
+      class="px-6"
   >
     <swiper-slide>
       <ServerFeaturedLargeAdd />

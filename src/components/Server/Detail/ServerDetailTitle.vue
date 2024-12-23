@@ -16,5 +16,9 @@ defineProps<{
 .minehub-server-name {
   font-size: 20px;
   letter-spacing: 0.5px;
+
+  @media(max-width: 599px) {
+    font-size: 18px;
+  }
 }
 </style>

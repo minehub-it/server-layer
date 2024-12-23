@@ -20,5 +20,8 @@ defineProps<{
   font-size: 11px !important;
   letter-spacing: 1.4px !important;
   line-height: 21px !important;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 </style>

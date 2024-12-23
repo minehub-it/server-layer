@@ -129,7 +129,7 @@ const categorySelected = ref(null)
   }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 599px) {
   .minehub-smart-search-2 .v-field {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;

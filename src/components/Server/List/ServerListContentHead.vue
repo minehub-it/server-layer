@@ -24,7 +24,7 @@ const props = defineProps({
 <style scoped lang="scss">
 .board__server-list {
   :deep(table thead tr th:nth-child(3)) {
-    @media(max-width: 600px) {
+    @media(max-width: 599px) {
       text-align: right;
       padding-right: 16px !important;
     }
@@ -33,7 +33,7 @@ const props = defineProps({
 
 .board-server-list-table-th {
   &--players {
-    @media(max-width: 600px) {
+    @media(max-width: 599px) {
       padding-right: 0;
       text-align: right;
     }
