@@ -11,7 +11,7 @@ const serverFilterStore = useServerFilterStore()
           @click="serverFilterStore.toggleOrder('name')"
       />
     </v-col>
-    <v-col class="flex-grow-0 hidden-sm-and-down">
+    <v-col class="flex-grow-0">
       <ServerListToolbarItem
           label="Giocatori" name="players" orderable
           :order="serverFilterStore.orders.players"
@@ -33,6 +33,10 @@ const serverFilterStore = useServerFilterStore()
     min-width: 286px;
     text-align: right;
     padding-right: 130px;
+
+    @media(max-width: 959px) {
+      padding-right: 28px;
+    }
   }
 }
 </style>

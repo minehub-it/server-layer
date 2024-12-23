@@ -41,7 +41,7 @@ function onFavoriteToggle() {
     <template #append>
       <ServerDetailPlayers
           :server="server"
-          class="mr-8 hidden-sm-and-down"
+          class="mr-8"
       />
 
       <ServerDetailFavorite
