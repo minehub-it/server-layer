@@ -32,7 +32,7 @@ function copyIp(e) {
 .minehub-server-ip {
   display: inline-block;
   line-height: 1.425;
-  font-size: 0.875rem;
+  font-size: 1rem;
   user-select: all;
   opacity: 0.6;
 }

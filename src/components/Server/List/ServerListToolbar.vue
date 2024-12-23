@@ -6,18 +6,14 @@ const serverFilterStore = useServerFilterStore()
   <div class="v-row v-row--no-gutters minehub-server-list__toolbar mt-6 pb-3">
     <v-col class="flex-grow-1">
       <ServerListToolbarItem
-          label="Nome"
-          name="name"
-          orderable
+          label="Nome" name="name" orderable
           :order="serverFilterStore.orders.name"
           @click="serverFilterStore.toggleOrder('name')"
       />
     </v-col>
-    <v-col class="flex-grow-0">
+    <v-col class="flex-grow-0 hidden-sm-and-down">
       <ServerListToolbarItem
-          label="Giocatori"
-          name="players"
-          orderable
+          label="Giocatori" name="players" orderable
           :order="serverFilterStore.orders.players"
           @click="serverFilterStore.toggleOrder('players')"
       />
