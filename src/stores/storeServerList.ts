@@ -94,12 +94,14 @@ export const useServerListStore = defineStore('server/list', () => {
             sortBy = 'players'
             sortDesc = serverFilterStore.orders.players === 'az'
         } else {
-            sortBy = 'position'
+            sortBy = 'random'
             sortDesc = true
         }
 
         // sort by
-        if (sortBy) {
+        if (sortBy === 'random') {
+            tmpList = tmpList.sort(() => Math.random() - 0.5);
+        } else {
             tmpList = tmpList.sort((a, b) => {
                 const sortA = a[sortBy]
                 const sortB = b[sortBy]
