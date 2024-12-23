@@ -16,7 +16,7 @@ const table = {
 </script>
 
 <template>
-  <ServerListHeader class="mt-2"/>
+  <ServerListHeader/>
   <ServerFeatured class="mb-3"/>
 
   <ServerListContentHead/>

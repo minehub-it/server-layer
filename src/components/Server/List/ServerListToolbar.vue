@@ -3,7 +3,7 @@ const serverFilterStore = useServerFilterStore()
 </script>
 
 <template>
-  <div class="v-row v-row--no-gutters minehub-server-list__toolbar mt-4 pb-3">
+  <div class="v-row v-row--no-gutters minehub-server-list__toolbar mt-6 pb-3">
     <v-col class="flex-grow-1">
       <ServerListToolbarItem
           label="Nome"

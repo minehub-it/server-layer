@@ -41,17 +41,17 @@ function onFavoriteToggle() {
     <template #append>
       <ServerDetailPlayers
           :server="server"
-          class="mr-8"
+          class="mr-8 hidden-sm-and-down"
       />
 
       <ServerDetailFavorite
           :is-favorite="serverFavoriteStore.isFavorite(server.address)"
           @click="onFavoriteToggle"
-          class="mr-8"
+          class="mr-8 hidden-sm-and-down"
       />
 
       <ServerDetailPlay
-          class="mr-3"
+          class="mr-3 hidden-sm-and-down"
           @click="serverDetailStore.setServer(server)"
       />
     </template>

@@ -7,7 +7,6 @@
     <template v-if="props.orderable">
       <v-icon v-if="props.order === 'az'">mdi-arrow-up</v-icon>
       <v-icon v-if="props.order === 'za'">mdi-arrow-down</v-icon>
-      <v-icon v-if="!props.order" />
     </template>
   </div>
 </template>
