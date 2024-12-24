@@ -17,7 +17,7 @@ export default defineNuxtConfig({
       github: {
         prefix: '/server',
         driver: 'github',
-        repo: "minehub-it/server",
+        repo: "minehub-it/server-list",
         branch: "main",
         dir: "/",
       },
