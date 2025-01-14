@@ -1,30 +1,30 @@
-import {defineStore} from "pinia";
-import api from "~/api";
-
 export const useServerFeaturedStore = defineStore('server/featured', () => {
-  const server: any = ref(null)
+  const serversFeatured: Ref<any[]> = ref([])
 
-  async function fetchServer(slug: string) {
-    return api.server.getServer(slug)
-      .then(response => setServer(response))
+  async function fetchServersFeatured() {
+    if (serversFeatured.value.length > 0) {
+      return true
+    }
+
+    return api.getServersFeatured()
+      .then(response => {
+        serversFeatured.value = response
+
+        if (serversFeatured.value.length < 3) {
+          while (serversFeatured.value.length < 3) {
+            serversFeatured.value.push(undefined);
+          }
+        }
+
+        console.log(serversFeatured.value)
+      })
       .catch(e => {
         console.log(e)
       })
   }
 
-  function setServer(data: IServer) {
-    server.value = data
-
-    if (server.value && server.value.themeColor) {
-      //themeStore.setThemeColor(server.value.themeColor)
-    } else {
-      //themeStore.resetThemeColor()
-    }
-  }
-
   return {
-    server,
-    fetchServer,
-    setServer,
+    serversFeatured,
+    fetchServersFeatured,
   }
 })
