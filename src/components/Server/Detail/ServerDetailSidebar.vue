@@ -256,12 +256,9 @@ const serverListStore = useServerListStore(),
     }
 
     .v-list-item-title {
+      position: relative;
       text-transform: uppercase;
       font-weight: 500;
-
-      position: relative;
-      font-weight: 600;
-      text-transform: uppercase;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       cursor: default;
       height: 28px;
