@@ -43,7 +43,7 @@ const categorySelected = ref(null)
         class="minehub-smart-search-1"
         chips variant="plain"
         placeholder="Cerca server"
-        hide-details
+        hide-details autocomplete="off" spellcheck="false"
         v-model="search.text"
         @update:modelValue="value => serverFilterStore.setKeyword(value)"
       >
