@@ -10,7 +10,7 @@ const apiCustom: AxiosInstance = axios.create({
 
 export default {
   async pingServer(address: string, platform: string) {
-    return (await api.get(`api/ping/${address}/${platform}`)).data
+    return (await api.get(`api/ping/${platform}/${address}`)).data
   },
   async getServer(slug: string): Promise<IServer> {
     return (await api.get(`server/info/${slug}`)).data
