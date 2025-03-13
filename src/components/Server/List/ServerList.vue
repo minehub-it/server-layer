@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const serverListStore = useServerListStore()
 const serverDetailStore = useServerDetailStore()
-const list = computed(() => serverListStore.list)
 
 const table = {
   headers: [
@@ -22,12 +21,12 @@ const table = {
   <ServerListContentHead/>
 
   <ServerListToolbar
-    v-if="list.length > 0"
+    v-if="serverListStore.list.length > 0"
   />
 
   <ServerListContent
       :table="table"
-      :servers="list"
+      :servers="serverListStore.list"
   />
 
   <client-only>
@@ -39,5 +38,5 @@ const table = {
     <ServerListFetchPlayersWatcher/>
   </client-only>
 
-  <MainFooter v-if="list.length > 0" />
+  <MainFooter v-if="serverListStore.list.length > 0" />
 </template>

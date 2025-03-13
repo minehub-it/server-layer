@@ -17,6 +17,7 @@ function onFavoriteToggle() {
   <v-card
       rounded class="py-2"
       :data-server-id="server.id"
+      :key="server.address"
   >
 
     <template #prepend>
@@ -26,6 +27,7 @@ function onFavoriteToggle() {
     </template>
 
     <template #item>
+
       <div>
         <ServerDetailTitle :title="server.name">
           <ServerDetailOnline v-if="server.online" />

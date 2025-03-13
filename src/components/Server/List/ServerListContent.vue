@@ -10,8 +10,8 @@ defineProps<{
     <template v-if="Array.isArray(servers) && servers.length > 0">
       <ServerListItem
           v-for="server of servers"
-          class="mb-5"
           :server="server"
+          class="mb-5"
       />
     </template>
     <template v-else>

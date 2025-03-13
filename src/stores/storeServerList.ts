@@ -3,32 +3,28 @@ export const useServerListStore = defineStore('server/list', () => {
     const serverCategoryStore = useServerCategoryStore()
     const serverFilterStore = useServerFilterStore()
     const serverFavoriteStore = useServerFavoriteStore()
-    const serverStorageStore = useServerStorageStore()
     const servers: Ref<IServer[]> = ref([])
 
     async function fetchFromContent() {
-        if (servers.value.length > 0) {
-            return true
-        }
-
         const queryContentKey = `/server/list`
 
         await useAsyncData(queryContentKey, async () => {
+            servers.value = await queryContent(queryContentKey)
+                .find()
+                .then(servers => {
+                    return servers.map(server => {
 
-            servers.value = await queryContent(queryContentKey).find().then(servers => {
-                return servers.map(server => {
+                        // filter categories by known categories
+                        server.categories = server.categories.filter(category => {
+                            return serverCategoryStore.categoriesSlug.includes(category.toLowerCase())
+                        })
 
-                    // filter categories by known categories
-                    server.categories = server.categories.filter(category => {
-                        return serverCategoryStore.categoriesSlug.includes(category.toLowerCase())
+                        // prepare server keywords
+                        server.keywords = server.name + ' ' + server.address + ' ' + server.categories.join(' ')
+
+                        return server
                     })
-
-                    // prepare server keywords
-                    server.keywords = server.name + ' ' + server.address + ' ' + server.categories.join(' ')
-
-                    return server
                 })
-            })
             return true
         })
     }
