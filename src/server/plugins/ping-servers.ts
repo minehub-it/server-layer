@@ -24,47 +24,47 @@ export default defineNitroPlugin(async () => {
         let servers = await fetchServers()
 
         if (servers.length === 0) {
-            console.warn('⚠ No servers found, retrying in 10 seconds...')
-            return setTimeout(updateServersStatus, 10000)
+            console.warn('⚠ No servers found')
+            if (!isBuilding) {
+                console.warn('🔄 Retrying in 10 seconds...')
+                return setTimeout(updateServersStatus, 10000)
+            }
+            return;
         }
 
         console.log('📡 Pinging servers...')
 
-        const results = await Promise.allSettled(
-            servers.flatMap(({address, platform}) =>
-                platform.map((plat) => {
-                    return tryPing(plat, address)
-                        .then((serverPing) => {
-                            return {
-                                address,
-                                platform: plat,
-                                data: {
-                                    online: serverPing.online,
-                                    players: serverPing.players?.online ?? 0,
-                                    slots: serverPing.players?.max ?? 0,
-                                    favicon: serverPing.favicon ?? '',
-                                    updatedAt: Date.now()
-                                }
-                            }
-                        })
-                        .catch(err => {
-                            console.error(`❌ Ping failed for ${address} (${plat})`)
-                            return {
-                                address,
-                                platform: plat,
-                                data: {
-                                    online: false,
-                                    players: 0,
-                                    slots: 0,
-                                    favicon: '',
-                                    updatedAt: Date.now()
-                                }
-                            }
-                        })
+        const pings = servers.map(({address, platform}) => {
+            platform = platform.includes('je') ? 'je' : 'be'
+
+            return tryPing(platform, address)
+                .then(serverPing => {
+                    return {
+                        address,
+                        platform,
+                        data: {
+                            ...serverPing,
+                            updatedAt: Date.now()
+                        }
                     }
-                )
-            )
-        )
+                })
+                .catch(err => {
+                    console.error(`❌ Ping failed for ${address} (${platform})`)
+                    return {
+                        address,
+                        platform,
+                        data: {
+                            online: false,
+                            players: 0,
+                            slots: 0,
+                            favicon: '',
+                            updatedAt: Date.now()
+                        }
+                    }
+                })
+        })
+
+        const results = await Promise.allSettled(pings)
 
         for (const result of results) {
             if (result.status === 'fulfilled') {
