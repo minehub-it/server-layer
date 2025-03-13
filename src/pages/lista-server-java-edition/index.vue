@@ -3,11 +3,20 @@
 </template>
 
 <script setup lang="ts">
+const serverListStore = useServerListStore()
+const serverCategoryStore = useServerCategoryStore()
 const serverFilterStore = useServerFilterStore()
+
+await serverCategoryStore.initialize()
+await serverListStore.fetchFromContent()
 
 serverFilterStore.setPlatform('je')
 serverFilterStore.setCategory(null)
 serverFilterStore.setFavorite(false)
+
+onMounted(async () => {
+  await serverListStore.fetchPlayers()
+})
 
 useHead({
   title: 'Lista Server per Minecraft: Java Edition - Minecraft ITALIA',
