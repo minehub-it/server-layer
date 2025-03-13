@@ -43,8 +43,6 @@ export const useServerListStore = defineStore('server/list', () => {
                 server[propertyKey] = properties[propertyKey]
             }
         }
-
-        serverStorageStore.update()
     }
 
     const list = computed(() => {
