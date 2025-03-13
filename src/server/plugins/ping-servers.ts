@@ -5,6 +5,8 @@ export default defineNitroPlugin(async () => {
 
     globalThis.serversCache = {}
 
+    const isBuilding = import.meta.env.VITE_BUILDING === 'true'
+
     async function fetchServers() {
         try {
             console.log('🔄 Fetching server list from API...')
@@ -74,7 +76,9 @@ export default defineNitroPlugin(async () => {
 
         console.log('✅ Server status updated')
 
-        setTimeout(updateServersStatus, 60000)
+        if (!isBuilding) {
+            setTimeout(updateServersStatus, 60000)
+        }
     }
 
     await updateServersStatus()
