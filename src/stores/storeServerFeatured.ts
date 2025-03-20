@@ -6,7 +6,7 @@ export const useServerFeaturedStore = defineStore('server/featured', () => {
       return true
     }
 
-    return api.getServersFeatured()
+    return apiServer.getServersFeatured()
       .then(response => {
         serversFeatured.value = response
 
@@ -15,8 +15,6 @@ export const useServerFeaturedStore = defineStore('server/featured', () => {
             serversFeatured.value.push(undefined);
           }
         }
-
-        console.log(serversFeatured.value)
       })
       .catch(e => {
         console.log(e)

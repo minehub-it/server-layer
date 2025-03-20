@@ -8,7 +8,7 @@ export const useServerPingStore = defineStore('server/ping', () => {
   }
 
   async function pingServer(server: IServer) {
-    const response = await api.pingServer(server.address, server.platform[0])
+    const response = await apiServer.pingServer(server.address, server.platform[0])
 
     if (response.status === 200) {
       serverListStore.updateServerByProperty(

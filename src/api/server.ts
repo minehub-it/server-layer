@@ -8,7 +8,7 @@ const apiCustom: AxiosInstance = axios.create({
   baseURL: getAppEndpoints().apiBaseUrl
 })
 
-export default {
+export const apiServer = {
   async pingServer(address: string, platform: string) {
     return (await api.get(`api/ping/${platform}/${address}`)).data
   },
